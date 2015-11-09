@@ -8,13 +8,13 @@ Dandelion is an online storage platform built on top of Node.js and Nginx to ser
 composed by a server, a web client and a [desktop client](https://github.com/Yarilo/dandelion-desktop).
 
 Among others, it offers:
-	- HTTPS/SSL
-	- Permissions management, being able to share resources
-	between several users
-	- Encryption of files using AES 256
-	- Ability to create P2P files (torrents) or links (magnets) from normal files to share them.
-	- A REST API
-
+ - HTTPS/SSL
+ - Permissions management, being able to share resources between several users
+ - Encryption of files using AES 256
+ - Ability to create P2P files (torrents) or links (magnets) from normal files to share them.
+ - A REST API
+ - A SPA application using AngularJS to dynamically load user's resources
+ 
 You can take a look the platform working on [dandelion.redes.dis.ulpgc.es](http://dandelion.redes.dis.ulpgc.es) (user: yarilo , password: test)
 ## Architecture
 
