@@ -1,9 +1,6 @@
 
 # Dandelion Platform
 
-
-## Introduction
-
 Dandelion is an online storage platform built on top of Node.js and Nginx to serve and store user resources. It is
 composed by a server, a web client and a [desktop client](https://github.com/Yarilo/dandelion-desktop).
 
@@ -14,7 +11,7 @@ Among others, it offers:
  - Ability to create P2P files (torrents) or links (magnets) from normal files to share them.
  - A REST API
  - A SPA application using AngularJS to dynamically load user's resources
- 
+
 You can take a look the platform working on [dandelion.redes.dis.ulpgc.es](http://dandelion.redes.dis.ulpgc.es) (user: yarilo , password: test)
 ## Architecture
 
