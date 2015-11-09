@@ -38,7 +38,7 @@ sh deploy.sh
 
 ## Disclaimer
 
-This platform was built for Computer Engineering Master's Thesis. It is presented here as an Academical Work, and therefore is not suitable for production use.
+This platform was built for a Computer Engineering Master's Thesis. It is presented here as an Academical Work, and therefore is not suitable for production use.
 
 ## License
 GNU - GPL v3
