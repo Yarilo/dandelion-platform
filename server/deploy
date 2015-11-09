@@ -1,0 +1,43 @@
+1. Bajarse nginx
+2. Compilarlo con http_dav_module y  este:https://github.com/arut/nginx-dav-ext-module
+3. Copiar la configuración
+4. Cambiar permisos carpeta pública, lectura,escritura y ejecución para todo los usuarios ("data")
+5. Bajar mongo
+7. Ejecutar npm install
+8. Ejecutar bower install
+9. Encender node.
+10. Darle candela a nginx.
+11. Crear usuarios y demás
+
+El caching parece afectar al AB benchmark...hay que mirarlo bien.
+Piensa que en Mediasmart no ponen caching en nginx
+
+¿Número máx. de conexiones simultáneas?
+¿Activar caché en node ADEMÁS de en nginx? -> ¿Afectaría al rendimiento rollo cpu para nada?
+
+
+Optimizaciones:
+
+En NGINX, añadir más servicios node a upstream con el keepalive 64 o similares
+
+Mongo db
+** WARNING: soft rlimits too low. Number of files is 256, should be at least 1000
+
+#Configurando SSL
+https://www.google.es/search?q=ERR_SSL_VERSION_OR_CIPHER_MISMATCH&oq=ERR_SSL_VERSION_OR_CIPHER_MISMATCH&aqs=chrome..69i57.245j0j7&sourceid=chrome&es_sm=91&ie=UTF-8#q=ERR_SSL_VERSION_OR_CIPHER_MISMATCH+nginx
+
+
+Crear torrent parece fallar con archivos que comenzaban en . (.bowerrc)
+Error: Not Found
+    at SendStream.error (/Users/yarilolisure/PFC/dandelion-backend/node_modules/express/node_modules/send/index.js:239:16)
+    at SendStream.pipe (/Users/yarilolisure/PFC/dandelion-backend/node_modules/express/node_modules/send/index.js:463:21)
+    at sendfile (/Users/yarilolisure/PFC/dandelion-backend/node_modules/express/lib/response.js:970:8)
+    at ServerResponse.sendFile (/Users/yarilolisure/PFC/dandelion-backend/node_modules/express/lib/response.js:397:3)
+    at /Users/yarilolisure/PFC/dandelion-backend/server/routes/p2p.js:66:13
+    at Object.oncomplete (fs.js:107:15)
+
+mongoDB cierra la conexión de vez en cuando, no sé porqué (¿en errores?)
+
+AWS:
+ sudo chmod 600 ubuntu-frontend.pm
+ ssh -i ubuntu-frontend.pem ubuntu@ec2-52-11-112-183.us-west-2.compute.amazonaws.com

@@ -1,0 +1,45 @@
+<div ng-controller="HomeCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title">Permisos</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-3">
+                <ul class="list-unstyled">
+                    <li>
+                        <span class="large-icon" ng-class="getIcon('shared')"></span>
+                    </li>
+                    <li>
+                        {{currentResource.name}}
+                    </li>
+                </ul>
+            </div>
+            <!--TODO: Poner algo en plan pa cambiar los permisos si eres dueño/puedes editar ? -->
+            <div class="col-md-6">
+                <table class="table table-hover table-bordered ">
+                <tr>
+                    <td>{{currentResource.owner}} es el dueño</td>
+                    <td> <span ng-class="getIcon('owns')" ng-click=""></span></td>
+                </tr>
+                <tr ng-repeat="user in usersAbleToEdit">
+                    <td>{{user}} puede editar </td>
+                    <td> <span ng-class="getIcon('canEdit')" ng-click=""></span></td>
+                </tr>
+                <tr ng-repeat="user in usersAbleToView">
+                    <td>{{user}} puede ver </td>
+                    <td> <span ng-class="getIcon('canView')" ng-click=""></span></td>
+                </tr>
+                <tr ng-show="currentResource.publicToken">
+                    <td>Tiene un enlace público</td>
+                    <td> <span ng-class="getIcon('link')" ng-click="getPublicLink(currentResource)"></span></td>
+                <tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="col-lg-10 col-lg-offset-2">
+            <button type="reset"  ng-click="ok()" class="btn btn-default">Cerrar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div ng-controller="HeaderCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title">Subir archivo(s) a: {{currentDir || "Inicio"}}</h3>
+    </div>
+    <div class="modal-body">
+            <div ng-controller="HeaderCtrl" flow-init = "
+                {
+                    target: getTarget,
+                    permanentErrors: [415, 500, 501],
+                    headers:interfaceHeaders,
+					testChunks: true,
+                }"
+                 flow-file-added="$file.relativePath=currentDir;"
+                 flow-file-success="$file.msg = $message;"
+                 flow-files-submitted="$flow.upload()">
+                <button class="btn btn-success" flow-btn/>Seleccionar archivo (s)</button>
+                <div ng-repeat="file in $flow.files" class="transfer-box">
+                    {{file.name}} ({{file.size}}bytes)
+                    <span ng-show = "file.isComplete() && !file.error" ng-class="getIcon('checkmark')"></span> <!--Sustituir por otra cosa?/-->
+                    <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+                        <div class="progress-bar" role="progressbar"
+                             aria-valuenow="{{file.progress() * 100}}"
+                             aria-valuemin="0"
+                             aria-valuemax="100"
+                             ng-style="{width: (file.progress() * 100) + '%'}">
+                            <span class="sr-only">{{file.progress()}}% Completado</span>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <a class="btn btn-xs btn-warning" ng-click="file.pause()" ng-show="!file.paused && file.isUploading()">
+                            Pausar
+                        </a>
+                        <a class="btn btn-xs btn-warning" ng-click="file.resume()" ng-show="file.paused">
+                            Reanudar
+                        </a>
+                        <a class="btn btn-xs btn-danger" ng-click="file.cancel()" ng-show="!file.isComplete()">
+                            Cancelar
+                        </a>
+                        <a class="btn btn-xs btn-info" ng-click="file.retry()" ng-show="file.error">
+                            Reintentar
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="modal-footer">
+        <div class="col-lg-10 col-lg-offset-2">
+            <button type="submit"  ng-click="ok()" class="btn btn-default">Cerrar</button>
+        </div>
+    </div>
+</div>

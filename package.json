@@ -1,0 +1,43 @@
+{
+  "name": "dandelion-backend",
+  "version": "1.0.0",
+  "description": "\"Backend for Dandelion\"",
+  "private": true,
+  "main": "cluster.js",
+  "scripts": {
+    "start": "node server/cluster.js",
+    "test": "node server/util/mongodb.js"
+  },
+  "author": "Yarilo Villanueva",
+  "license": "GNU-GPL",
+  "dependencies": {
+    "acl": "^0.4.4",
+    "async": "^1.4.0",
+    "bcrypt": "^0.8.1",
+    "body-parser": "^1.13.3",
+    "clone": "^1.0.2",
+    "connect-multiparty": "^1.2.5",
+    "connect-restreamer": "^1.0.2",
+    "create-torrent": "^3.9.0",
+    "express": "^4.10.2",
+    "file-encryptor": "^0.1.0",
+    "fs-extra": "^0.23.1",
+    "http-proxy": "^1.7.0",
+    "jsonwebtoken": "^5.0.5",
+    "magnet-link": "^1.0.3",
+    "mailgun-js": "^0.7.1",
+    "mongodb": "^1.4.22",
+    "morgan": "^1.5.0",
+    "node-acl": "0.0.2",
+    "nodemailer": "^1.4.0",
+    "nodemailer-mailgun-transport": "^1.0.1",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0",
+    "prototypes": "^0.3.2",
+    "readdirp": "^1.4.0",
+    "request": "^2.60.0",
+    "tar-fs": "^1.8.1",
+    "testing": "^0.2.2",
+    "webtorrent": "^0.27.2"
+  }
+}

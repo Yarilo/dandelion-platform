@@ -1,0 +1,47 @@
+<div ng-controller="HomeCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title">Mover {{currentResource.name}} a..</h3>
+    </div>
+    <div class="modal-body">
+<body>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th><a href="" ng-show="currentDir" ng-class="getIcon('up')" ng-click="goUp()"></a></th>
+            <th><a href="" ng-click="switchOrder('name');">{{currentDir || "Home"}}</a></th>
+            <th></th>
+            <th></th>
+            <th><a href="" ng-click="switchOrder('size');">Tamaño <span class="caret"></span></a></th>
+            <th><a href="" ng-click="switchOrder('owner');">Propietario</a><span class="caret"></span></th>
+            <th><a href="" ng-click="switchOrder('mtime');">Modificado en..</a> <span class="caret"></span></th>
+        </tr>
+        </thead>
+        <tr context-menu data-target="menu-{{$index}}"  ng-repeat="resource in resources | filter:query | filter:byCurrentDir| orderBy:predicate:reverse">
+            <td>
+                <a ng-href="{{getResource(resource, true)}}" ng-click="changeCurrentDir(resource); selectFolder(resource);">
+                <span ng-class="getIcon(resource)"></span></a>
+            </td>
+            <td>
+                <div ng-if="resource.resource_kind === 'file'">
+                    <p class="disabled">{{resource.name | relative_path | nodat}}</p>
+                </div>
+                <div ng-if="resource.resource_kind === 'directory'">
+                    <a ng-href="{{getResource(resource, true)}}" ng-click="changeCurrentDir(resource); selectFolder(resource);">{{resource.name | relative_path | nodat}}
+                    </a>
+                </div>
+            </td>
+            <td><a href="" ng-show="isShared(resource)" title="Compartido"  ng-click="openPermissions(resource)"><span class="smaller-icon" ng-class="getIcon('shared')"></span></a></td>
+            <td><a href="" ng-show="containsDat(resource)" title="Encriptado"><span class="smaller-icon"  ng-class="getIcon('encrypt')"></span></td>
+            <td>{{resource.size  | get_unit }}</td>
+            <td>{{resource.owner}}</td>
+            <td>{{resource.mtime | date }}</td>
+        </tr>
+    </table>
+</body>
+<div class="modal-footer">
+    <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" ng-enter="ok()"  ng-click="ok()" class="btn btn-primary">Mover aquí</button>
+        <button type="reset"  ng-click="cancel()" class="btn btn-default">Cancelar</button>
+    </div>
+</div>
+</div>

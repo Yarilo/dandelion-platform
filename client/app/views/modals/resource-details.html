@@ -1,0 +1,53 @@
+<div ng-controller="HomeCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title">Detalles</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-4 ">
+                <ul class="list-unstyled">
+                    <li>
+                        <span class="large-icon" ng-class="getIcon(currentResource)"></span>
+                    </li>
+                    <li>
+                        {{currentResource.name}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    <li>
+                        {{currentResource.size | get_unit}}
+                    </li>
+                    <li>
+                        <div ng-show="isShared(currentResource)" >
+                         Permisos: Compartido, <a href="" title="ver permisos"  ng-click="openPermissions(currentResource)">ver permisos</a>
+                        </div>
+                        <div ng-show="!isShared(currentResource) && isOwner(currentResource)" >
+                         Permisos: No compartido, <a href="" title="compartir"  ng-click="openShare(currentResource)">compartir</a>
+                        </div>
+                    </li>
+                    <li>
+                        Dueño: {{currentResource.owner}}
+                    </li>
+                    <li>
+                        {{currentResource.mtime | date}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="text-center">
+           <a ng-href="{{getResource(currentResource)}}" title="Descargar" download><span ng-class="getIcon('download')"></span></a>
+            <a ng-show="isOwner(currentResource) && currentResource.resource_kind === 'file'" href="" title="Encriptar"><span ng-class="getIcon('encrypt')" ng-click ="encryptDecrypt(currentResource)"></span></a>
+            <a ng-show="isOwner(currentResource)" href="" title="Compartir"><span ng-class="getIcon('share')" ng-click="openShare(currentResource)"></span></a>
+            <a ng-show="isOwner(currentResource) && currentResource.resource_kind === 'file'" href="" title="Torrent/Magnet"><span ng-class="getIcon('magnet')" ng-click="openP2P(currentResource)"></span></a>
+            <a class="pointer" ng-click="openMove(currentResource)"role="menuitem" title="Mover"><span ng-class="getIcon('move')"></span></a>
+            <a ng-show="canEdit(currentResource)" href="" title="Renombrar"><span ng-class="getIcon('rename')" ng-click="ok(); openRename(currentResource);"></span></a>
+            <a ng-show="canEdit(currentResource)" href="" title="Borrar"><span ng-class="getIcon('delete')" ng-click="ok(); deleteResource(currentResource);"></span></a>
+            <a href="" title="Volver"><span ng-class="getIcon('back')" ng-click="ok()"></span></a>
+        </div>
+    </div>
+</div>

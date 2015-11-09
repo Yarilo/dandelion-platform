@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="dandelionApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Dandelion - Bienvenido </title>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src ="scripts/app.js"></script>
+    <script src ="scripts/filters.js"></script>
+    <script src ="scripts/controllers/home-controller.js"></script>
+    <script src ="scripts/controllers/modal-controller.js"></script>
+    <script src ="scripts/controllers/header-controller.js"></script>
+    <script src="js/jquery.min.js"></script>
+
+    <script src ="scripts/services/interface.js"></script>
+    <script src ="scripts/services/login.js"></script>
+    <script src ="scripts/services/data.js"></script>
+    <script src ="scripts/services/directories.js"></script>
+
+    <script src ="scripts/directives/ng-enter.js"></script>
+
+
+    <script src = "bower_components/angucomplete-alt/dist/angucomplete-alt.min.js"></script>
+    <script src = "bower_components/ng-context-menu/dist/ng-context-menu.min.js"></script>
+    <script src = "bower_components/angular-route/angular-route.min.js"></script>
+    <script src = "bower_components/flow.js/dist/flow.min.js"></script>
+    <script src = "bower_components/ng-flow/dist/ng-flow.min.js"></script>
+    <script src = "bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src = "scripts/dependencies/ui-bootstrap-tpls-0.11.2.min.js"></script>
+
+    <link rel="stylesheet" href="bower_components/angucomplete-alt/angucomplete-alt.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-controller="HeaderCtrl">
+<div class="container-fluid">
+    <div class = "row">
+        <br> <!-- Better: Apply margin to the row below -->
+        <br>
+    </div>
+    <div class="row" ng-show="loginState.isLogged">
+        <div class ="col-md-offset-1 col-md-2">
+            <div class="panel panel-default text-center">
+                <div class="panel-body">
+                    <h5>Bienvenido - {{user.name}}</h5>
+                    {{date}}
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class ="col-md-1" class="custom-breadcrumb">
+            <a href="#/resources/" ng-click="goHome()" title="Inicio"><span ng-class="getIcon('home')"></span></a>
+        </div>
+        <div class="col-md-offset-1 col-md-1"><a href="" title="Añadir carpeta"><span ng-class="getIcon('folderPlus')" ng-click="openNewDir()"></span></a></div>
+        <div class="col-md-1"><a href="" title="Subir archivo"><span ng-class="getIcon('upload')" ng-click="openUpload()"></span></a></div>
+        <div class="col-md-1"><a href="#/configuration" title="Configuración"><span ng-class="getIcon('configuration')"></span></a></div>
+        <div class="col-md-1"><a href="" title="Desconectarse"><span ng-class="getIcon('exit')" ng-click="logOut()"></span></a></div>
+        <div class="col-md-1" ng-show="!searchMode" ng-click="searchMode=!searchMode;">
+            <a href="" title="Buscar"><span ng-class="getIcon('search')"></span></a>
+        </div>
+        <div class="col-md-2" ng-controller="HomeCtrl">
+                <a href="" title="Buscar"><angucomplete-alt ng-show="searchMode" id="ex1"
+                     placeholder="Buscar"
+                     pause="100"
+                     selected-object="selectResource"
+                     local-data="resources"
+                     search-fields="name"
+                     title-field="name"
+                     minlength="1"
+                     text-searching ="Buscando..."
+                     text-no-results ="Archivo o directorio no encontrado"
+                     input-class="form-control form-control-small"
+                     match-class="highlight">
+                </angucomplete-alt></a>
+        </div>
+    </div>
+    <div class="col-md-offset-1 col-md-10 col-md-offset-1 table-responsive">
+    <div ng-view></div>
+    </div> <!--/table-responsive-->
+</div> <!--/container-fluid-->
+</body>
+</html>

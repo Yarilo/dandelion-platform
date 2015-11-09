@@ -1,0 +1,28 @@
+<div ng-controller="HomeCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title">Torrent/Magnet</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-4">
+                <ul class="list-unstyled">
+                    <li>
+                        <span class="large-icon" ng-class="getIcon(currentResource)"></span>
+                    </li>
+                    <li>
+                        {{currentResource.name}}
+                    </li>
+                </ul>
+            </div>
+        <div class=" col-md-6 row text-center">
+            <p class ="lead">Todo el que tenga acceso al torrent/magnet podrá tener accceso al archivo </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="col-lg-10 col-lg-offset-2">
+            <button type="button" class="btn btn-primary" ng-click="ok(); createTorrent(currentResource)">Crear torrent</button>
+            <button type="button" class="btn btn-warning" ng-click="ok(); createMagnet(currentResource)">Crear magnet</button>
+            <button type="submit"  ng-click="ok()" class="btn btn-default">Cerrar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div ng-controller="HomeCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title">Compartir {{currentResource.name}} con...</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+            <label for="inputPassword" class="col-md-2 control-label">Usuario</label>
+                <div class="col-md-8">
+                    <angucomplete-alt id="ex1"
+                                      placeholder="Buscar usuario"
+                                      pause="100"
+                                      selected-object="selectUser"
+                                      local-data="users"
+                                      search-fields="name"
+                                      title-field="name"
+                                      minlength="1"
+                                      text-searching ="Buscando..."
+                                      text-no-results ="Usuario no encontrado"
+                                      input-class="form-control form-control-small"
+                                      match-class="highlight"
+                                      ng-keyup="$event.keyCode == 13 ? ok() : null">
+                    </angucomplete-alt>
+                    </div>
+        </div>
+        <!--TODO: Añadir si se quiere compartir permisos de escritura o lectura -->
+        <div class="form-group">
+            <label for="select" class="col-md-2 control-label">Permisos</label>
+            <select ng-model="permission.selected" class="col-md-8">
+                <option value="edit">Edición</option>
+                <option value="view">Lectura</option>
+            </select>
+        </div>
+    </form>
+    </div>
+    <div class="modal-footer">
+        <div class="col-lg-10 col-lg-offset-2">
+            <button type="submit"  ng-click="ok()" class="btn btn-primary">Compartir</button>
+            <button type="submit" ng-show="isOwner(currentResource) && currentResource.resource_kind === 'file'" ng-click="openConfirmationModal('Crear enlace público',dataService.messages.PUBLIC_LINK,currentResource, getPublicLink);" class="btn btn-warning">Crear enlace público</button>
+            <button type="reset"  ng-click="cancel()" class="btn btn-default">Cancelar</button>
+        </div>
+    </div>`
+</div>

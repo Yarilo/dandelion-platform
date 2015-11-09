@@ -1,0 +1,72 @@
+<div ng-controller="HomeCtrl">
+<div class="container-fluid">
+<form class="form-horizontal">
+    <h5 class="form-signin-heading text-center">Registrarse</h5>
+    <br>
+    <br>
+    <div class="form-group">
+        <label for="inputPassword" class="col-md-offset-2 col-md-2 control-label">Nombre de usuario</label>
+        <div class="col-md-4">
+            <input type="text" ng-model="username" required class="form-control" id="inputName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-md-offset-2 col-md-2 control-label">Correo electrónico</label>
+        <div class="col-md-4">
+            <input type="text" required ng-model="email" class="form-control" id="inputEmail">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputPassword" class="col-md-offset-2 col-md-2 control-label">Nueva contraseña</label>
+        <div class="col-md-4">
+            <input type="password" required ng-model="password" class="form-control" id="inputPassword">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-md-offset-2 col-md-2 control-label">Repetir contraseña</label>
+        <div class="col-md-4">
+            <input type="password" required ng-model="confirmPassword" class="form-control" id="inputPassword">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-4">
+            <button class="btn  btn-primary btn-block" type="submit" ng-click="signup(username, email, password,confirmPassword)"> Crear una nueva cuenta </button>
+            <a class="btn btn-default btn-block"  href="/#/login"> Volver </a>
+        </div>
+    </div>
+
+    <div ng-show="mailDiffer">
+        <div class="alert alert-warning alert-dismissible col-md-offset-2 col-md-8" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+           <div class="text-center">El correo introducido no es válido</div>
+        </div>
+    </div>
+    <div ng-show="passwordsDiffer">
+        <div class="alert alert-warning alert-dismissible col-md-offset-2 col-md-8" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+           <div class="text-center">Las contraseñas no coinciden, por favor, inténtelo de nuevo</div>
+        </div>
+    </div>
+    <div ng-show="mailInUse">
+        <div class="alert alert-warning alert-dismissible col-md-offset-2 col-md-8" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+            <div class="text-center">Correo en uso, por favor, escoja otro.</div>
+        </div>
+    </div>
+    <div ng-show="nameInUse">
+        <div class="alert alert-warning alert-dismissible col-md-offset-2 col-md-8" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+            <div class="text-center">Nombre en uso, por favor, escoja otro.</div>
+        </div>
+    </div>
+    <div ng-show="mailSent">
+        <div class="alert alert-success alert-dismissible col-md-offset-2 col-md-8" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+            <div class="text-center">Se le ha enviado un correo para validar su cuenta.</div>
+        </div>
+    </div>
+</form>
+</div>
+</div>

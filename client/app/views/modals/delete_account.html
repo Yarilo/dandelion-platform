@@ -1,0 +1,16 @@
+<div ng-controller="HomeCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title">Borrar cuenta</h3>
+    </div>
+    <div class="modal-body">
+        <p class="lead"> ¿Estás seguro de que deseas borrar tu cuenta y todos sus archivos asociados?</p>
+        <p class="lead"> Se borrarán también todas las carpetas compartidas de las que seas dueño.</p>
+        <p class="lead"> Esta acción es irreversible.</p>
+    </div>
+    <div class="modal-footer">
+        <div class="col-lg-10 col-lg-offset-2">
+            <button type="reset"  ng-click="cancel()" class="btn btn-default">Cancelar</button>
+            <button type="submit"  ng-click="ok()" class="btn btn-danger">Borrar cuenta</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container-fluid">
+<form class="form-horizontal">
+    <h5 class="form-signin-heading text-center">Validación de cuenta</h5>
+    <br>
+    <br>
+    <div ng-show="validationSuccess">
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+           <div class="text-center">Cuenta validada satisfactoriamente.</div>
+        </div>
+    </div>
+    <div ng-show="validationFailed">
+        <div class="alert alert-warning alert-dismissible col-md-offset-2 col-md-8" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+            <div class="text-center">Error en la validación de la cuenta, probablemente el link de validación haya expirado.</div>
+        </div>
+    </div>
+    <div ng-show="validationSuccess" class="col-md-offset-4 col-md-2"><a class="btn btn-warning" href="/#/login" >Pulsa aquí para iniciar sesión</a></div>
+
+</form>
+</div>

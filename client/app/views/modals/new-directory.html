@@ -1,0 +1,14 @@
+<div ng-controller="HeaderCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title">Crear nuevo directorio en: {{currentDir || "Inicio"}}</h3>
+    </div>
+    <div class="modal-body">
+        <input ng-model="dirName" id="inputUsername"  ng-keyup="$event.keyCode == 13 ? ok(dirName)  : null" class="form-control" placeholder="Nombre del directorio" required autofocus>
+    </div>
+    <div class="modal-footer">
+        <div class="col-lg-10 col-lg-offset-2">
+            <button type="submit"  ng-click="ok(dirName)" class="btn btn-primary">Crear directorio</button>
+            <button type="reset"  ng-click="cancel()" class="btn btn-default">Cancelar</button>
+        </div>
+    </div>
+</div>

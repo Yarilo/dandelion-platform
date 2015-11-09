@@ -1,0 +1,14 @@
+<div ng-controller="HeaderCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title">Renombrar {{currentResource.resource_kind === 'file' ? 'archivo' : 'directorio'}}</h3>
+    </div>
+    <div class="modal-body">
+        <input ng-model="newName" id="inputUsername"  ng-keyup="$event.keyCode == 13 ? ok(newName)  : null" class="form-control" placeholder="Nombre del directorio" required autofocus>
+    </div>
+    <div class="modal-footer">
+        <div class="col-lg-10 col-lg-offset-2">
+            <button type="submit"  ng-click="ok(newName)" class="btn btn-primary">Renombrar</button>
+            <button type="reset"  ng-click="cancel()" class="btn btn-default">Cancelar</button>
+        </div>
+    </div>
+</div>
